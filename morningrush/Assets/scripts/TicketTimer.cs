@@ -14,6 +14,7 @@ public class TicketTimer : MonoBehaviour {
 	void Start () {
         
         startpos = transform.position;
+        transform.localScale = new Vector3(1, 1, 1);
         gameObject.GetComponent<Button>().interactable = true;
     }
 	
@@ -37,7 +38,8 @@ public class TicketTimer : MonoBehaviour {
         }
         else
         {
-            GameObject newTicket = Instantiate(this.gameObject, startpos, Quaternion.identity) as GameObject;
+            GameObject newTicket = Instantiate(this.gameObject) as GameObject;
+            newTicket.transform.position = startpos;
             newTicket.transform.SetParent(transform.parent);
             Destroy(this.gameObject);
         }

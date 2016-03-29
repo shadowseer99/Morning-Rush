@@ -166,11 +166,11 @@ public class expressobar : MonoBehaviour {
                     {
                         mocha = false;
                     }
-                    else if (a != 2)
+                    if (a != 2)
                     {
                         whitemocha = false;
                     }
-                    else if (a != 3)
+                    if (a != 3)
                     {
                         latte = false;
                     }
