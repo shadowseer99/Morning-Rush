@@ -60,6 +60,7 @@ public class expressobar : MonoBehaviour {
     }
     public void expresso(int number)
     {
+        
         if (!activecup.fail)
         {
             if (activecup.shots != -1 || activecup.basefluid != -1 || activecup.finish != -1)
@@ -83,7 +84,7 @@ public class expressobar : MonoBehaviour {
     {
         if (!activecup.fail)
         {
-            if ( activecup.shots == -1 || activecup.basefluid != -1 || activecup.finish != -1)
+            if ( activecup.basefluid != -1 || activecup.finish != -1)
             {
                 activecup.fail = true;
                 cup.color = Color.red;
@@ -116,7 +117,7 @@ public class expressobar : MonoBehaviour {
     {
         if (!activecup.fail)
         {
-            if ( activecup.shots == -1 || activecup.basefluid == -1 || activecup.finish != -1)
+            if (activecup.basefluid == -1 || activecup.finish != -1)
             {
                 activecup.fail = true;
                 cup.color = Color.red;
@@ -147,6 +148,10 @@ public class expressobar : MonoBehaviour {
     }
     public bool orderup(string order)
     {
+        if (activecup == null)
+        {
+            return false;
+        }
         //ticker.text = "test";
         if (!activecup.fail)
         {

@@ -7,21 +7,20 @@ public class TicketTimer : MonoBehaviour {
     public float speed;
     public float yPos;
     public Text order;
-    private Vector3 startpos;
     private bool correct = false;
+    public float reward=500;
+    public ScoreScript scoring;
 
 	// Use this for initialization
 	void Start () {
-        
-        startpos = transform.position;
-        transform.localScale = new Vector3(1, 1, 1);
+
+        scoring = GameObject.FindGameObjectWithTag("Store").GetComponent<ScoreScript>();
         gameObject.GetComponent<Button>().interactable = true;
     }
 	
-	// Update is called once per frame
-    //The positions and speed of the ticket are arbitrary 
-    //the amount of time alloted for each order will later be determined by difficulty
+	
 	void Update () {
+        reward -= Time.deltaTime*15;
         yPos = transform.position.y;
         if (yPos > 158)
         {
@@ -38,14 +37,12 @@ public class TicketTimer : MonoBehaviour {
         }
         else
         {
-            GameObject newTicket = Instantiate(this.gameObject) as GameObject;
-            newTicket.transform.position = startpos;
-            newTicket.transform.SetParent(transform.parent);
+            scoring.failed();
             Destroy(this.gameObject);
         }
         if(correct)
         {
-            speed = -5f;
+            speed = -20f;
         }
         transform.Translate(0, speed*Time.deltaTime, 0);
 	}
@@ -57,6 +54,7 @@ public class TicketTimer : MonoBehaviour {
         if(correct)
         {
             gameObject.GetComponent<Button>().interactable = false;
+            scoring.getTip((int)reward);
             order.text = "Satisfied";
         }
     }
