@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class exvessel : MonoBehaviour {
+public abstract class exvessel   {
     public List<int> syrup=new List<int>();
     public int shots=-1;
     public int basefluid = -1;

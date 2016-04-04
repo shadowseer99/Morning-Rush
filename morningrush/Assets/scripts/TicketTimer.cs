@@ -6,7 +6,7 @@ public class TicketTimer : MonoBehaviour {
 
     
     public float speed;
-    public float yPos;
+    private float yPos;
     public Text order;
     private bool correct = false;
     public float reward=500;
@@ -50,7 +50,11 @@ public class TicketTimer : MonoBehaviour {
         }
         else
         {
-            scoring.failed();
+            if(!correct)
+            {
+                scoring.failed();
+            }
+            
             Destroy(this.gameObject);
         }
         if(correct)

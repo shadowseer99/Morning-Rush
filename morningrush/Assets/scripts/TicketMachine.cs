@@ -19,7 +19,7 @@ public class TicketMachine : MonoBehaviour {
             if (transform.childCount == 0)
             {
                 GameObject temp = Instantiate(ticketPrefab);
-                temp.transform.parent = transform;
+                temp.transform.SetParent(transform);
                 temp.transform.localPosition = new Vector3(0, 250, 0);
                 cooldown = 3;
             }
@@ -28,7 +28,7 @@ public class TicketMachine : MonoBehaviour {
                 if (Random.Range(transform.childCount, maxchild * 100) < maxchild)
                 {
                     GameObject temp = Instantiate(ticketPrefab);
-                    temp.transform.parent = transform;
+                    temp.transform.SetParent(transform);
                     temp.transform.localPosition = new Vector3(0, 250, 0);
                     cooldown = 3;
                 }

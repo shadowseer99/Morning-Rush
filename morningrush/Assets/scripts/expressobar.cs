@@ -18,11 +18,11 @@ public class expressobar : MonoBehaviour {
 
     public AudioClip cupSound;
     public AudioClip pouringSound;
-    AudioSource audio;
+    AudioSource sound;
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        sound = GetComponent<AudioSource>();
         cup = display.GetComponent<Image>();
         ticker = ticket.GetComponent<Text>();
     }
@@ -34,7 +34,7 @@ public class expressobar : MonoBehaviour {
         cup.color = Color.white;
         cup.preserveAspect = true;
 
-        audio.PlayOneShot(cupSound, 1);
+        sound.PlayOneShot(cupSound, 1);
     }
 
     public void newhot(int size)
@@ -45,7 +45,7 @@ public class expressobar : MonoBehaviour {
         cup.color = Color.white;
         cup.preserveAspect = true;
 
-        audio.PlayOneShot(cupSound, 1);
+        sound.PlayOneShot(cupSound, 1);
     }
     public void addSyrup(int type)
     {
@@ -88,7 +88,7 @@ public class expressobar : MonoBehaviour {
                     cup.preserveAspect = true;
                 }
 
-                audio.PlayOneShot(pouringSound, 1);
+                sound.PlayOneShot(pouringSound, 1);
             }
         }
     }
@@ -162,7 +162,7 @@ public class expressobar : MonoBehaviour {
     {
         if (activecup == null)
         {
-            return false;
+            //return false;
         }
         //ticker.text = "test";
         if (!activecup.fail)
@@ -327,7 +327,7 @@ public class expressobar : MonoBehaviour {
                 }
                 //
             }//noshots
-            else if(activecup.shots==0)
+            else if(activecup.shots==-1)
             {
                 int moch = 0;
                 int vanilla=0;
@@ -335,11 +335,11 @@ public class expressobar : MonoBehaviour {
                 foreach (int a in activecup.syrup)
                 {
                     //ticker.text = "test";
-                    if (a != 1)
+                    if (a == 1)
                     {
                         moch++;
                     }
-                    else if (a != 3)
+                    else if (a == 3)
                     {
                         vanilla++;
                     }
