@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class TicketTimer : MonoBehaviour {
 
     
@@ -10,12 +11,18 @@ public class TicketTimer : MonoBehaviour {
     private Vector3 startpos;
     private bool correct = false;
 
+    public AudioClip orderUp;
+    public AudioClip tip;
+    AudioSource audio;
+
 	// Use this for initialization
 	void Start () {
-        
+        audio = GetComponent<AudioSource>();
+
         startpos = transform.position;
         transform.localScale = new Vector3(1, 1, 1);
         gameObject.GetComponent<Button>().interactable = true;
+        audio.PlayOneShot(orderUp, 1);
     }
 	
 	// Update is called once per frame
@@ -57,6 +64,7 @@ public class TicketTimer : MonoBehaviour {
         if(correct)
         {
             gameObject.GetComponent<Button>().interactable = false;
+            audio.PlayOneShot(tip, 1);
             order.text = "Satisfied";
         }
     }
