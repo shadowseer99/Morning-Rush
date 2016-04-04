@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class TicketTimer : MonoBehaviour {
 
     
@@ -11,11 +12,23 @@ public class TicketTimer : MonoBehaviour {
     public float reward=500;
     public ScoreScript scoring;
 
+    public AudioClip orderUp;
+    public AudioClip tip;
+    AudioSource audio;
+
 	// Use this for initialization
 	void Start () {
+<<<<<<< HEAD
 
         scoring = GameObject.FindGameObjectWithTag("Store").GetComponent<ScoreScript>();
+=======
+        audio = GetComponent<AudioSource>();
+
+        startpos = transform.position;
+        transform.localScale = new Vector3(1, 1, 1);
+>>>>>>> origin/master
         gameObject.GetComponent<Button>().interactable = true;
+        audio.PlayOneShot(orderUp, 1);
     }
 	
 	
@@ -54,7 +67,11 @@ public class TicketTimer : MonoBehaviour {
         if(correct)
         {
             gameObject.GetComponent<Button>().interactable = false;
+<<<<<<< HEAD
             scoring.getTip((int)reward);
+=======
+            audio.PlayOneShot(tip, 1);
+>>>>>>> origin/master
             order.text = "Satisfied";
         }
     }

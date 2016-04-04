@@ -15,8 +15,14 @@ public class expressobar : MonoBehaviour {
     public Sprite thcold;
     public Sprite fcold;
     public Sprite hot;
+
+    public AudioClip cupSound;
+    public AudioClip pouringSound;
+    AudioSource audio;
+
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         cup = display.GetComponent<Image>();
         ticker = ticket.GetComponent<Text>();
     }
@@ -27,6 +33,8 @@ public class expressobar : MonoBehaviour {
         cup.sprite=ecold;
         cup.color = Color.white;
         cup.preserveAspect = true;
+
+        audio.PlayOneShot(cupSound, 1);
     }
 
     public void newhot(int size)
@@ -36,6 +44,8 @@ public class expressobar : MonoBehaviour {
         cup.sprite = hot;
         cup.color = Color.white;
         cup.preserveAspect = true;
+
+        audio.PlayOneShot(cupSound, 1);
     }
     public void addSyrup(int type)
     {
@@ -77,6 +87,8 @@ public class expressobar : MonoBehaviour {
                     cup.sprite = tcold;
                     cup.preserveAspect = true;
                 }
+
+                audio.PlayOneShot(pouringSound, 1);
             }
         }
     }
