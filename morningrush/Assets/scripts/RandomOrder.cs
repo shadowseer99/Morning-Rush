@@ -25,7 +25,7 @@ public class RandomOrder : MonoBehaviour
         {
             if (Random.Range(0, 2) == 1)
             {
-                order = "Iced" + " " + orderType;
+                order =orderSize+" "+ "Iced" + " " + orderType;
             }
         }
         orderText.text = order;

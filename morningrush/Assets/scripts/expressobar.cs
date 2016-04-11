@@ -26,10 +26,10 @@ public class expressobar : MonoBehaviour {
         cup = display.GetComponent<Image>();
         ticker = ticket.GetComponent<Text>();
     }
-	public void newcold()
+	public void newcold(int size)
     {
         activecup = new coldcup();
-        activecup.size = 3;
+        activecup.size = size;
         cup.sprite=ecold;
         cup.color = Color.white;
         cup.preserveAspect = true;
@@ -168,7 +168,7 @@ public class expressobar : MonoBehaviour {
         if (!activecup.fail)
         {
             //ticker.text = "test";
-            if (activecup.size==activecup.shots)
+            if (activecup.shots>0)
             {
                 //ticker.text = "test";
                 bool mocha = true;
@@ -193,32 +193,58 @@ public class expressobar : MonoBehaviour {
                     }
 
                 }
-                if(activecup.size == count&&mocha &&activecup.basefluid!=-1&&activecup.finish!=-1)
+                if(mocha &&activecup.basefluid!=-1&&activecup.finish!=-1)
                 {
                     if(activecup is coldcup)
                     {
-                        ticker.text = "Iced Mocha";
-                        activecup = null;
-                        cup.color = Color.white;
-                        if(order==ticker.text)
+                        if(activecup.shots==activecup.size)
                         {
-                            return true;
+                            if (activecup.size == 1&&count==3)
+                            {
+                                ticker.text = "Tall Iced Mocha";
+                            }
+                            else if (activecup.size == 2 && count == 4)
+                            {
+                                ticker.text = "Grande Iced Mocha";
+                            }
+                            else if (activecup.size == 3 && count == 6)
+                            {
+                                ticker.text = "Venti Iced Mocha";
+                            }
+                            else
+                            {
+                                activecup = null;
+                                cup.color = Color.white;
+                                return false;
+                            }
+                            activecup = null;
+                            cup.color = Color.white;
+                            if (order == ticker.text)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
                         }
                         else
                         {
+                            activecup = null;
+                            cup.color = Color.white;
                             return false;
                         }
                     }
-                    else 
+                    else if(activecup.size+2==count)
                     {
-                        if(activecup.size==1)
+                        if(activecup.size==1&&activecup.shots==1)
                         {
                             ticker.text = "Tall Mocha";
-                        }else if (activecup.size == 2)
+                        }else if (activecup.size == 2 && activecup.shots == 2)
                         {
                             ticker.text = "Grande Mocha";
                         }
-                        else if (activecup.size == 3)
+                        else if (activecup.size == 3 && activecup.shots == 2)
                         {
                             ticker.text = "Venti Mocha";
                         }
@@ -233,34 +259,66 @@ public class expressobar : MonoBehaviour {
                             return false;
                         }
                     }
+                    else
+                    {
+                        activecup = null;
+                        cup.color = Color.white;
+                        return false;
+                    }
                 }
-                else if (activecup.size == count && whitemocha && activecup.basefluid != -1 && activecup.finish != -1)
+                else if (whitemocha && activecup.basefluid != -1 && activecup.finish != -1)
                 {
                     if (activecup is coldcup)
                     {
-                        ticker.text = "Iced White Chocolate Mocha";
-                        activecup = null;
-                        cup.color = Color.white;
-                        if (order == ticker.text)
+                        if (activecup.shots == activecup.size)
                         {
-                            return true;
+                            if (activecup.size == 1 && count == 3)
+                            {
+                                ticker.text = "Tall Iced White Chocolate Mocha";
+                            }
+                            else if (activecup.size == 2 && count == 4)
+                            {
+                                ticker.text = "Grande Iced White Chocolate Mocha";
+                            }
+                            else if (activecup.size == 3 && count == 6)
+                            {
+                                ticker.text = "Venti Iced White Chocolate Mocha";
+                            }
+                            else
+                            {
+                                activecup = null;
+                                cup.color = Color.white;
+                                return false;
+                            }
+                            activecup = null;
+                            cup.color = Color.white;
+                            if (order == ticker.text)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
                         }
                         else
                         {
+                            activecup = null;
+                            cup.color = Color.white;
                             return false;
                         }
                     }
-                    else
+                    else if(activecup.size + 2 == count)
                     {
-                        if (activecup.size == 1)
+                        if (activecup.size == 1 && activecup.shots == 1)
                         {
                             ticker.text = "Tall White Chocolate Mocha";
                         }
-                        else if (activecup.size == 2)
+                        else if (activecup.size == 2 && activecup.shots == 2)
                         {
                             ticker.text = "Grande White Chocolate Mocha";
                         }
-                        else if (activecup.size == 3)
+                        else if (activecup.size == 3 && activecup.shots == 2)
                         {
                             ticker.text = "Venti White Chocolate Mocha";
                         }
@@ -275,34 +333,66 @@ public class expressobar : MonoBehaviour {
                             return false;
                         }
                     }
+                    else
+                    {
+                        activecup = null;
+                        cup.color = Color.white;
+                        return false;
+                    }
                 }//order types
-                else if (activecup.size == count && latte && activecup.basefluid != -1 && activecup.finish != -1)
+                else if (latte && activecup.basefluid != -1 && activecup.finish != -1)
                 {
                     if (activecup is coldcup)
                     {
-                        ticker.text = "Iced Vanilla Latte";
-                        activecup = null;
-                        cup.color = Color.white;
-                        if (order == ticker.text)
+                        if (activecup.shots == activecup.size)
                         {
-                            return true;
+                            if (activecup.size == 1 && count == 3)
+                            {
+                                ticker.text = "Tall Iced Vanilla Latte";
+                            }
+                            else if (activecup.size == 2 && count == 4)
+                            {
+                                ticker.text = "Grande Iced Vanilla Latte";
+                            }
+                            else if (activecup.size == 3 && count == 6)
+                            {
+                                ticker.text = "Venti Iced Vanilla Latte";
+                            }
+                            else
+                            {
+                                activecup = null;
+                                cup.color = Color.white;
+                                return false;
+                            }
+                            activecup = null;
+                            cup.color = Color.white;
+                            if (order == ticker.text)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
                         }
                         else
                         {
+                            activecup = null;
+                            cup.color = Color.white;
                             return false;
                         }
                     }
-                    else
+                    else if (activecup.size + 2 == count)
                     {
-                        if (activecup.size == 1)
+                        if (activecup.size == 1 && activecup.shots == 1)
                         {
                             ticker.text = "Tall Vanilla Latte";
                         }
-                        else if (activecup.size == 2)
+                        else if (activecup.size == 2 && activecup.shots == 2)
                         {
                             ticker.text = "Grande Vanilla Latte";
                         }
-                        else if (activecup.size == 3)
+                        else if (activecup.size == 3 && activecup.shots == 2)
                         {
                             ticker.text = "Venti Vanilla Latte";
                         }
@@ -316,6 +406,12 @@ public class expressobar : MonoBehaviour {
                         {
                             return false;
                         }
+                    }
+                    else
+                    {
+                        activecup = null;
+                        cup.color = Color.white;
+                        return false;
                     }
                 }
                 else
@@ -349,17 +445,17 @@ public class expressobar : MonoBehaviour {
                     }
 
                 }
-                if(hchocolat&& activecup.size == moch && activecup.size == vanilla && activecup.basefluid != -1 && activecup.finish != -1)
+                if(hchocolat&& activecup.size+2 == moch  && activecup.basefluid != -1 && activecup.finish != -1)
                 {
-                    if (activecup.size == 1)
+                    if (activecup.size == 1&&vanilla==1)
                     {
                         ticker.text = "Tall Hot Chocolate";
                     }
-                    else if (activecup.size == 2)
+                    else if (activecup.size == 2 && vanilla == 1)
                     {
                         ticker.text = "Grande Hot Chocolate";
                     }
-                    else if (activecup.size == 3)
+                    else if (activecup.size == 3 && vanilla == 2)
                     {
                         ticker.text = "Venti Hot Chocolate";
                     }

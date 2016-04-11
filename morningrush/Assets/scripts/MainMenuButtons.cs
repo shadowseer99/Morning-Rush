@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MainMenuButtons : MonoBehaviour {
-
+    public GameObject credits;
+    public GameObject instructions;
+    public GameObject dropdown;
 	// Use this for initialization
 	void Start () {
 
@@ -16,17 +19,25 @@ public class MainMenuButtons : MonoBehaviour {
 
     public void startButtonPress()
     {
-        Application.LoadLevel("level1");
+        Application.LoadLevel(dropdown.GetComponent<Dropdown>().value+1);
     }
 
     public void creditsButtonPress()
     {
-        Application.LoadLevel("credits");
+        credits.gameObject.SetActive(true);
     }
 
+    public void closeCredits()
+    {
+        credits.gameObject.SetActive(false);
+    }
     public void howToButtonPress()
     {
-        Application.LoadLevel("tutorial");
+        instructions.gameObject.SetActive(true);
+    }
+    public void closeInst()
+    {
+        instructions.gameObject.SetActive(false);
     }
 
     public void toWebsiteButtonPress()

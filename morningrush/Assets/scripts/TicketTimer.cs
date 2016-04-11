@@ -9,7 +9,7 @@ public class TicketTimer : MonoBehaviour {
     private float yPos;
     public Text order;
     private bool correct = false;
-    public float reward=500;
+    public float reward=550;
     public ScoreScript scoring;
 
     public AudioClip orderUp;

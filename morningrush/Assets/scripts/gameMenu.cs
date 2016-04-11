@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class gameMenu : MonoBehaviour {
-
+    public GameObject cards;
 	// Use this for initialization
 	void Start () {
 	
@@ -19,5 +19,10 @@ public class gameMenu : MonoBehaviour {
     public void main()
     {
         Application.LoadLevel(0);
+        Time.timeScale = 1;
+    }
+    public void showCards(bool act)
+    {
+        cards.SetActive(act);
     }
 }
