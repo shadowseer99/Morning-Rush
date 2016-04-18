@@ -41,7 +41,7 @@ public class ScoreScript : MonoBehaviour {
     {
         money += dosh / 100f;
         tips.text = "Tips: $ " + money;
-        if(timeattack&&money>=0)
+        if(timeattack&&money>=20)
         {
             Time.timeScale = 0;
             levelend.SetActive(true);

@@ -340,9 +340,9 @@ public class expressobar : MonoBehaviour {
                         return false;
                     }
                 }//order types
-                else if (latte && activecup.basefluid != -1 && activecup.finish != -1)
+                else if (latte && activecup.basefluid != -1)
                 {
-                    if (activecup is coldcup)
+                    if (activecup is coldcup && activecup.finish != -1)
                     {
                         if (activecup.shots == activecup.size)
                         {
@@ -382,7 +382,7 @@ public class expressobar : MonoBehaviour {
                             return false;
                         }
                     }
-                    else if (activecup.size + 2 == count)
+                    else if (activecup.size + 2 == count && activecup.finish == -1)
                     {
                         if (activecup.size == 1 && activecup.shots == 1)
                         {
